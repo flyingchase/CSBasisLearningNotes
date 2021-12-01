@@ -1,49 +1,45 @@
-#  **TO DO LIST**
+# **TO DO LIST**
 
-- top命令
-- ps命令
-- netstat命令
-- awk命令
-- find命令
-- grep命令
-- wc命令
-- sed命令
-- head和tail命令
+- top 命令
+- ps 命令
+- netstat 命令
+- awk 命令
+- find 命令
+- grep 命令
+- wc 命令
+- sed 命令
+- head 和 tail 命令
 - 正则表达式
-- 如何查找出现频率最高的100个IP地址
-- linux如何统计文件中某个字符串出现的频率
-- linux启动的第一个进程
-- linux查看端口占用
-- linux查看CPU和内存使用
-- Linux查看系统负载命令
-- Linux调试程序
-- Linux硬链接和软连接
+- 如何查找出现频率最高的 100 个 IP 地址
+- linux 如何统计文件中某个字符串出现的频率
+- linux 启动的第一个进程
+- linux 查看端口占用
+- linux 查看 CPU 和内存使用
+- Linux 查看系统负载命令
+- Linux 调试程序
+- Linux 硬链接和软连接
 - core dump
-- cmake和makefile
-- Shell脚本基本语法和使用
+- cmake 和 makefile
+- Shell 脚本基本语法和使用
 
-
-
-# Linux网络编程
+# Linux 网络编程
 
 - 孤儿进程、僵尸进程和守护进程
-- 进程间通信方式signal、file、pipe、shm、sem、msg、socket
+- 进程间通信方式 signal、file、pipe、shm、sem、msg、socket
 - 线程同步机制线程：互斥量、锁机制、条件变量、信号量、读写锁
-- fork返回值
-- 五大IO模型：阻塞I/O、非阻塞I/O、I/O复用、信号驱动I/O、异步I/O
-- IO复用机制
-- epoll与select/poll
-- LT水平触发和ET边缘触发
-- Reactor和Proactor模式
+- fork 返回值
+- 五大 IO 模型：阻塞 I/O、非阻塞 I/O、I/O 复用、信号驱动 I/O、异步 I/O
+- IO 复用机制
+- epoll 与 select/poll
+- LT 水平触发和 ET 边缘触发
+- Reactor 和 Proactor 模式
 - 反向代理、负载均衡
 
- 
-
-# Linux操作指令-笔记
+# Linux 操作指令-笔记
 
 ## 1 文件权限
 
-### 1.1 ls命令
+### 1.1 ls 命令
 
 帮助 `man ls` `info ls`
 
@@ -51,81 +47,49 @@
 
 e.g:
 
-`-rwxr-xr-x   1 qlzhou  staff   5797544 12 21 15:59 impl`
+`-rwxr-xr-x 1 qlzhou staff 5797544 12 21 15:59 impl`
 
-第一列10个字符 文件类型和权限
+第一列 10 个字符 文件类型和权限
 
-​	1 \- 代表文件 d代表文件夹
+​ 1 \- 代表文件 d 代表文件夹
 
-​	234拥有者权限 rwx 可读可写可执行
+​ 234 拥有者权限 rwx 可读可写可执行
 
-​	567 同用户组权限 r-x 可读可执行
+​ 567 同用户组权限 r-x 可读可执行
 
-​	8910 其他用户权限 r-x 可读可执行
+​ 8910 其他用户权限 r-x 可读可执行
 
- 	其中r w x顺序不变 不存在该权限则为- 
+其中 r w x 顺序不变 不存在该权限则为-
 
-第二列 1代表多少文件名连接到此节点i-node
+第二列 1 代表多少文件名连接到此节点 i-node
 
-第三列 qlzhou代表所有者账号
+第三列 qlzhou 代表所有者账号
 
-第四列 表示文件所属用户组 
+第四列 表示文件所属用户组
 
-第五列 文件大小 默认单位B
+第五列 文件大小 默认单位 B
 
 第六列 修改日期
 
-​	完整时间显示 `ls -l --full-time`
+​ 完整时间显示 `ls -l --full-time`
 
 第七列 文件名 隐藏文件前含.
 
-
-
 ### 1.2 文件权限修改
 
-使用cp复制时会保留原有的用户权限 从而他人无法修改
+使用 cp 复制时会保留原有的用户权限 从而他人无法修改
 
-- chgrp修改所属用户组
+- chgrp 修改所属用户组
 
-  change group简写
+  change group 简写
 
-  -R递归 recursive 持续修改 包括子目录下文件 目录
+  -R 递归 recursive 持续修改 包括子目录下文件 目录
 
-
-
-
-
-- Chown修改文件所有者
+- Chown 修改文件所有者
 
   `chown username filename/dirname` 可加-R
 
-
-
-
-
 - Chmod
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## **man - 获得帮助**
 
@@ -205,7 +169,7 @@ grep '^>' test.fa | cut -c 2-   # 得到fasta文件中的序列名称（去掉�
 
 ```bash
 less file       # 分屏显示文件内容，按空格键显示下一页，按下/后可以搜索内容
-less -SN file   # 显示文件的行号，并且截断太长的行 
+less -SN file   # 显示文件的行号，并且截断太长的行
 
 head file       # 默认显示文件前10行
 head -n 20 file # 显示文件前20行
@@ -303,7 +267,7 @@ scp file username@host:/path/to/dir/ # 将本地文件复制到远程服务器�
 
 ## **rsync - 远程文件拷贝**
 
-rsync与scp不同，它只是做增量更新且支持断点续传，也就是要复制的文件存在于目标文件夹且内容与当前要复制的相同，则不会复制。
+rsync 与 scp 不同，它只是做增量更新且支持断点续传，也就是要复制的文件存在于目标文件夹且内容与当前要复制的相同，则不会复制。
 
 ```bash
 rsync -azvP dir1 dir2					# 将dir1的内容同步至dir2
@@ -335,7 +299,7 @@ kill -9 PID # 删除编号为PID的任务
 nohup ./run.sh &> run.sh.o &	# 远程SSH登录服务器，在后台运行任务，断开远程连接后任务仍然在后台跑
 ```
 
-- 如果运行任务时没有加nohup命令，但任务运行时间长，但又必须断开（比如快下班了），若不想让任务因为断开远程连接而中断，可以用disown命令补救
+- 如果运行任务时没有加 nohup 命令，但任务运行时间长，但又必须断开（比如快下班了），若不想让任务因为断开远程连接而中断，可以用 disown 命令补救
 
 ```bash
 ./run.sh	# 假如任务是直接这样开始跑的
@@ -356,11 +320,11 @@ command1 | command2
 
 ## **>, >> - 输入输出重定向**
 
-Linux中常用重定向操作符有：
+Linux 中常用重定向操作符有：
 
-1. 标准输入（/dev/stdin）：代码为0， 使用<或<<
-2. 标准输出（/dev/stdout）：代码为1，使用>（覆盖）或>>（追加）
-3. 标准错误输出（/dev/stderr）：代码为2，使用2>或2>>
+1. 标准输入（/dev/stdin）：代码为 0， 使用<或<<
+2. 标准输出（/dev/stdout）：代码为 1，使用>（覆盖）或>>（追加）
+3. 标准错误输出（/dev/stderr）：代码为 2，使用 2>或 2>>
 4. &> 标准输出和错误输出同时重定向
 5. /dev/null 代表垃圾箱，不想要保存的东西都可以重定向到这里
 
@@ -376,7 +340,7 @@ Linux中常用重定向操作符有：
 - 输入重定向是将文件作为输入的来源，而不是键盘
 
 ```bash
-command < file			# 将file的内容作为command的输入 
+command < file			# 将file的内容作为command的输入
 command << END			# 从标准输入（键盘）中读取数据，直到遇到分界符END时停止（分界符用户可以自定义）
 command <file1 > file2	# 将file1作为command的输入，并将处理结果输出到file2
 ```
@@ -392,7 +356,7 @@ do
 done < file.txt > result.txt
 ```
 
-逐行读入file.txt的内容，处理之后，将结果保存到result.txt文件中。
+逐行读入 file.txt 的内容，处理之后，将结果保存到 result.txt 文件中。
 
 ## **find, locate, which - 文件查找**
 
@@ -419,7 +383,7 @@ find . -type f -name '*.py' -print0 | xargs -0 wc -l				# 统计一个目录中�
 
 ## **parallel - 并行工具**
 
-parallel是增强版的xargs。假如一个脚本文件中有4条命令：
+parallel 是增强版的 xargs。假如一个脚本文件中有 4 条命令：
 
 ```bash
 # cat run.sh
@@ -429,7 +393,7 @@ echo c
 echo d
 
 # 同时执行4个任务，生信中常通过这种方式并行执行多个任务
-cat run.sh | parallel -j 4	
+cat run.sh | parallel -j 4
 find *.fq | parallel -j 12 "fastqc {} --outdir ."	# 同时执行12个Fastqc任务
 find *.bam | parallel --dry-run 'samtools index {}' # 同时执行samtools index任务，--dry-run显示任务命令但不实际执行，用于命令检查
 ```
@@ -449,7 +413,7 @@ passwd username	   # 更改指定用户的密码
 
 ## **dos2unix - 文件格式转换**
 
-Linux很多工具都是针对纯文本文件的，并且需要是Unix-like格式的文本文件。但是很多时候文件是从Windows或Mac系统上传到Linux服务器上的，这可能导致文件格式不兼容，原因是不同平台生成的文本文件的换行符不一样。
+Linux 很多工具都是针对纯文本文件的，并且需要是 Unix-like 格式的文本文件。但是很多时候文件是从 Windows 或 Mac 系统上传到 Linux 服务器上的，这可能导致文件格式不兼容，原因是不同平台生成的文本文件的换行符不一样。
 
 | 操作系统 | 符号 | 正则表达式 |
 | -------- | ---- | ---------- |
@@ -493,13 +457,13 @@ grep -v '^\s*$' file		# 删除空白行
 
 ## **sed**
 
-sed是stream editor的缩写，中文称之为“流编辑器”。
+sed 是 stream editor 的缩写，中文称之为“流编辑器”。
 
 ```bash
 sed command file
 ```
 
-- command部分，针对每行要进行的处理
+- command 部分，针对每行要进行的处理
 - file，要处理的文件
 
 ### **Actions**
@@ -545,21 +509,19 @@ sed '/pattern/w file2' file1 # 将匹配的行写入file2中
 
 ## **awk**
 
-Awk是一个强大的文本分析工具，它每次读入一条记录，并把每条记录切分成字段后进行分析。Awk官方文档是非常好的学习材料，通过`man awk`查看。
+Awk 是一个强大的文本分析工具，它每次读入一条记录，并把每条记录切分成字段后进行分析。Awk 官方文档是非常好的学习材料，通过`man awk`查看。
 
 ```bash
 awk 'BEGIN { action } pattern { action } END { action }'
 ```
 
-**Awk程序通常是一系列 pattern {action}对：**
+**Awk 程序通常是一系列 pattern {action}对：**
 
-`pattern`，表示模式匹配，只处理匹配的行。pattern可以省略，表示匹配所有行
+`pattern`，表示模式匹配，只处理匹配的行。pattern 可以省略，表示匹配所有行
 
 `action`，表示对匹配行所做的动作。{actions}可以省略，表示{ print }。`BEGIN`和`END`的{action}不能省略
 
-
-
-**pattern可能是：**
+**pattern 可能是：**
 
 `BEGIN`， 执行初始化操作，程序开始时执行一次
 
@@ -569,16 +531,16 @@ awk 'BEGIN { action } pattern { action } END { action }'
 
 ### **常用参数**
 
-- `-F value` 设置域分隔符，相当于给FS内置变量赋值
-- `-v var=value` 将变量value的值赋给程序变量var，-v可以多次使用
+- `-F value` 设置域分隔符，相当于给 FS 内置变量赋值
+- `-v var=value` 将变量 value 的值赋给程序变量 var，-v 可以多次使用
 
 ### **记录与字段**
 
-记录是一次读入的内容，通常是文件的一行，保存在字段变量$0中，记录可以被分割成字段，保存在变量$1，$2，...，$NF中。
+记录是一次读入的内容，通常是文件的一行，保存在字段变量$0中，记录可以被分割成字段，保存在变量$1，$2，...，$NF 中。
 
 ### **表达式与操作符**
 
-Awk表达式的符号与C语言的类似，基本的表达式有数字，字符串，变量，字段，数组以及函数调用。变量无需声明，它们在首次使用时被初始化为`null`。
+Awk 表达式的符号与 C 语言的类似，基本的表达式有数字，字符串，变量，字段，数组以及函数调用。变量无需声明，它们在首次使用时被初始化为`null`。
 
 ```bash
 assignment          =  +=  -=  *=  /=  %=  ^=
@@ -600,7 +562,7 @@ field               $
 
 ### **正则表达式**
 
-在Awk中语言中，通常测试一个记录、字段或字符串是否与一个正则表达式匹配，匹配返回1，不匹配返回0。正则表达式用两个反斜杠`/`包围。
+在 Awk 中语言中，通常测试一个记录、字段或字符串是否与一个正则表达式匹配，匹配返回 1，不匹配返回 0。正则表达式用两个反斜杠`/`包围。
 
 ```bash
 expr ~ /r/							 # 评估expr是否与r匹配。匹配的意思是expr的一个子串是否在正则表达式r定义的字符串集中。
@@ -608,7 +570,7 @@ expr ~ /r/							 # 评估expr是否与r匹配。匹配的意思是expr的一个
 /r/ { action }, $0 ~ /r/ { action }	 # 两者相同， /r/ 等于 $0 ~ /r/
 ```
 
-任何表达式都可以放到`~`和`!~`右边或者内建的需要正则表达式的地方。在必要的时候，该表达式会被转变成字符串，然后作为一个正则表达式来解释。以下三行awk命令完成同样的功能：输出第5列为10的的行。
+任何表达式都可以放到`~`和`!~`右边或者内建的需要正则表达式的地方。在必要的时候，该表达式会被转变成字符串，然后作为一个正则表达式来解释。以下三行 awk 命令完成同样的功能：输出第 5 列为 10 的的行。
 
 ```bash
 seq 20 | xargs -n5 > file
@@ -625,7 +587,7 @@ awk '$5 ~ 10' file
 
 ### **数组**
 
-Awk支持一维数组。其表示方法为`array[expr]`，`expr`在内部被统一转换成字符串类型，因此A[1]，与A["1"]相同，事实上索引都是“1”。索引为字符串的数组被称为关联数组。`expr in array`用于判断数组元素array[expr]是否存在。
+Awk 支持一维数组。其表示方法为`array[expr]`，`expr`在内部被统一转换成字符串类型，因此 A[1]，与 A["1"]相同，事实上索引都是“1”。索引为字符串的数组被称为关联数组。`expr in array`用于判断数组元素 array[expr]是否存在。
 
 ```bash
 for ( var in array ) statement
@@ -674,7 +636,7 @@ print expr1, expr2, ..., exprn	# 打印指定字段到标准输出
 printf format, expr-list		# C语言printf函数的重用
 ```
 
-输入函数getline有以下几种形式：
+输入函数 getline 有以下几种形式：
 
 ```bash
 getline							# 读取下一条记录到$0，更新NF，NR和FNR
@@ -728,7 +690,7 @@ awk '{sum+=$1} END {print sum/NR}' file	# 求第一列的平均数
  awk -v RS=">" '/chr1|chr2/ {print $0}' hg19.fa	# 提取chr1和chr2的序列
 ```
 
-## **Bash脚本模板**
+## **Bash 脚本模板**
 
 ```bash
 #!/bin/bash
@@ -740,7 +702,7 @@ command2
 ...
 ```
 
-`chmod +x run.sh` 给run.sh脚本增加可执行权限
+`chmod +x run.sh` 给 run.sh 脚本增加可执行权限
 
 执行脚本，以下三种方式都可以：
 
@@ -775,16 +737,3 @@ Ctrl + c		# 中止当前命令的执行
 seq 10			# 产生1到10的整数
 md5sum			# 生成，或验证文件的MD5值
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
